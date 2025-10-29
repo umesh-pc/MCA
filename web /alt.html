@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Library Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #fff;
+      box-shadow: 0 0 10px #ccc;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: left;
+    }
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    form {
+      margin-top: 30px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px #ccc;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .available {
+      color: green;
+      font-weight: bold;
+    }
+    .not-available {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Library Management System</h1>
+
+  <table id="booksTable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Books will appear here -->
+    </tbody>
+  </table>
+
+  <form id="addBookForm">
+    <h2>Add New Book</h2>
+    <label for="title">Book Title:</label>
+    <input type="text" id="title" required placeholder="Enter book title" />
+    
+    <label for="author">Author:</label>
+    <input type="text" id="author" required placeholder="Enter author's name" />
+    
+    <label for="availability">Availability:</label>
+    <select id="availability" required>
+      <option value="available">Available</option>
+      <option value="not-available">Not Available</option>
+    </select>
+    
+    <button type="submit">Add Book</button>
+  </form>
+
+  <script>
+    // Initial book list
+    const books = [
+      { title: "To Kill a Mockingbird", author: "Harper Lee", availability: "available" },
+      { title: "1984", author: "George Orwell", availability: "not-available" },
+      { title: "The Great Gatsby", author: "F. Scott Fitzgerald", availability: "available" }
+    ];
+
+    const booksTableBody = document.querySelector("#booksTable tbody");
+    const addBookForm = document.getElementById("addBookForm");
+
+    // Function to render books to the table
+    function renderBooks() {
+      booksTableBody.innerHTML = ""; // Clear existing rows
+
+      books.forEach((book, index) => {
+        const tr = document.createElement("tr");
+
+        const tdTitle = document.createElement("td");
+        tdTitle.textContent = book.title;
+        tr.appendChild(tdTitle);
+
+        const tdAuthor = document.createElement("td");
+        tdAuthor.textContent = book.author;
+        tr.appendChild(tdAuthor);
+
+        const tdAvailability = document.createElement("td");
+        tdAvailability.textContent = book.availability === "available" ? "Available" : "Not Available";
+        tdAvailability.className = book.availability === "available" ? "available" : "not-available";
+        tr.appendChild(tdAvailability);
+
+        booksTableBody.appendChild(tr);
+      });
+    }
+
+    // Handle form submit to add a new book
+    addBookForm.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission reload
+
+      const title = document.getElementById("title").value.trim();
+      const author = document.getElementById("author").value.trim();
+      const availability = document.getElementById("availability").value;
+
+      if (title === "" || author === "") {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      // Add new book to array
+      books.push({ title, author, availability });
+
+      // Reset form
+      addBookForm.reset();
+
+      // Re-render the book list
+      renderBooks();
+    });
+
+    // Initial rendering
+    renderBooks();
+  </script>
+
+</body>
+</html>

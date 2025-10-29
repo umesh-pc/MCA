@@ -1,0 +1,15 @@
+
+
+.box {
+  border: 2px solid rgb(0, 0, 0);
+  color: #dddd29;
+  background: #d23e1d;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius:15px ;
+}
+ document.getElementById('result').innerText = "Please enter a valid number.";
+ document.getElementById('result').innerText = number + " is an even number.";
+ document.getElementById('result').innerText = number + " is an odd number.";
+        }
