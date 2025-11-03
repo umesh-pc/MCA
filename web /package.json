@@ -1,7 +1,7 @@
 {
-  "name": "umesh",
+  "name": "user",
   "version": "1.0.0",
-  "main": "con.js",
+  "main": "evod.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "mysql": "^2.18.1",
-    "mysql2": "^3.15.3"
+    "mysql": "^2.18.1"
   }
 }
