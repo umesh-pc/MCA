@@ -4,13 +4,13 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import St from "./st.jsx";
 import Ran from"./ran.jsx";
+import Counter from"./count.jsx";
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div> 
-      <Ran />
-      <St />
+     <Counter />
     </div>
   )
 }
