@@ -1,0 +1,5 @@
+Some lines start like this.
+This sentence will be ignored.
+simple code is nice.
+We see value here.
+Apple and Orange.
