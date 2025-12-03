@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Even or Odd Checker</title>
+  <style>
+    /* Basic styling for better presentation */
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    #container {
+      padding: 20px;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      font-size: 1.2em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <h1>Even or Odd Results</h1>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    // --- JavaScript Logic ---
+
+    /**
+     * Checks if a single number is even or odd.
+     * @param {number} number - The number to check.
+     * @returns {string} - A string indicating if the number is Even or Odd.
+     */
+    const checkEvenOrOdd = (number) => {
+      // Use the modulo operator (%) to find the remainder after dividing by 2.
+      // If the remainder is 0, the number is even. Otherwise, it's odd.
+      const result = (number % 2 === 0) ? 'Even' : 'Odd';
+      return `<p>${number} is <strong>${result}</strong>.</p>`;
+    };
+
+    // 1. Define the two numbers you want to check.
+    const num1 = 44;
+    const num2 = 121;
+
+    // 2. Get the HTML element where we will display the output.
+    const resultsContainer = document.getElementById('results');
+
+    // 3. Call the function for each number and combine the results.
+    let outputHTML = checkEvenOrOdd(num1);
+    outputHTML += checkEvenOrOdd(num2);
+
+    // 4. Set the inner HTML of our container to the generated output.
+    resultsContainer.innerHTML = outputHTML;
+
+  </script>
+
+</body>
+</html>
